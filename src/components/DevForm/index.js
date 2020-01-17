@@ -31,7 +31,7 @@ import React, { useState , useEffect } from 'react'
     async function handleSubmit(e) {
         e.preventDefault();
 
-       await onsubmit({
+       await onSubmit({
            github_username,
            techs,
            latitude,
