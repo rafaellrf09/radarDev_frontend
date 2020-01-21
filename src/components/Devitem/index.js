@@ -1,10 +1,21 @@
 import React from 'react';
+import MaterialIcon from 'material-icons-react';
 
 import "./styles.css"
 
-function DevItem({ dev }) {
+
+
+function DevItem({ dev, deleteDev }) {
+    
+    async function userdelete(id){
+        await deleteDev(id);
+    }
+
     return(
         <li className="dev-item" key={dev._id}>
+            <div style={{float: "right", cursor: "pointer"}} onClick={() => userdelete(dev._id)}>
+                < MaterialIcon icon = "delete" />
+            </div>
             <header>
                 <img src={dev.avatar_url} alt={dev.name} />
                 <div className="user-info">

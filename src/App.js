@@ -29,6 +29,13 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
+   async function handdleDeleteDev(id) {
+     await api.delete(`/devs/${id}`);
+     const response = await api.get("/devs");
+     setDevs(response.data);
+     console.log("dev apagado")
+   }
+
   return (
    <div id="app">
       <aside>
@@ -39,7 +46,7 @@ function App() {
         <ul>
           {
             devs.map( dev => (
-              <DevItem key={dev._id} dev={dev}/>
+              <DevItem key={dev._id} dev={dev} deleteDev={handdleDeleteDev}/>
             ))
           }
         </ul>
